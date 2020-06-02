@@ -2,6 +2,8 @@ class Event < ApplicationRecord
   require 'date'
 
   belongs_to :user
+  has_many :attendances
+  has_many :users, through: :attendances
 
   validates :date, presence: true
   validate :date_future
