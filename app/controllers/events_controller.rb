@@ -16,7 +16,11 @@ class EventsController < ApplicationController
     redirect_to events_path
     else
     render :new
-end
+    end
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   private
