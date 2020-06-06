@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    sql = "user_id = #{current_user.id}"
+    @events = Event.where(sql)
   end
 
   def edit
