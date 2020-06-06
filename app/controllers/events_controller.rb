@@ -14,8 +14,12 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path(@event)
     else
-      render :new
+    render :new
     end
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   def edit
