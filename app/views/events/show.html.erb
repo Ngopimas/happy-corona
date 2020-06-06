@@ -1,5 +1,47 @@
-<h2><%= @event.title %></h2>
-<p><%= @event.description %></p>
-<p><%= @event.location %></p>
-<p><%= @event.duration %></p>
-<p><%= @event.price %></p>
+<div class="bg-white">
+  <div class="banner-show">
+    <div class="container d-flex align-items-center justify-content-between py-2">
+      <div>
+        <h1 style="color: black"><%= @event.title %></h1>
+        <h2 style="color: grey">10 juin 2020</h2>
+        <p style="color: black">Hosted by <strong>Romain Coupey</strong></p>
+      </div>
+      <div>
+        <p style="color:grey">22 participants</p>
+        <%= link_to "Register now", "#", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="card mb-3">
+        <%= image_tag "background_banner.jpg" %>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <p class=""><strong>Description</strong></p>
+        <p class=""><small><%= @event.description %></small></p>
+      </div>
+
+      <div class="card p-3 mb-3">
+        <p class=""><strong>Participants</strong></p>
+        <p class=""><small>Ton voisin</small></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="bg-white border sticky-top">
+        <div class="d-flex justify-content-between border-bottom">
+            <%= image_tag "map.jpg" %>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
