@@ -7,8 +7,6 @@ class Event < ApplicationRecord
 
   validates :date, presence: true
   validate :date_future
-  validates :duration, presence: true,
-          numericality: { only_integer: true, greater_than: 0 }
   validates :title, presence: true,
             length: { minimum: 5 }
   validates :description, presence: true,
