@@ -1,0 +1,12 @@
+<h1> Les events <%= params[:category] %> </h1>
+<div class="container my-5">
+  <h2>Nos prochains events</h2>
+  <div class="cards my-5">
+    <% @events.each do |event| %>
+    <div class="card-category">
+      Ceci est un event
+      <li> <%= event.title %> </li>
+    </div>
+    <% end %>
+  </div>
+</div>

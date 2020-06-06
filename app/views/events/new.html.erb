@@ -1,14 +1,11 @@
-<h1>Create your event</h1>
-<%= form_for(@event) do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.label :location %>
-<%= f.text_field :location %>
-<%= f.label :duration %>
-<%= f.text_field :duration %>
-<%= f.label :price %>
-<%= f.text_field :price %>
-<%= f.submit %>
-<% end %>
+<div class="col-6 m-auto">
+  <br>
+  <br>
+  <div class="event-form">
+    <h1>Create your event</h1>
+    <div class="mt-3">
+      <%= render "event_form", event: @event %>
+    </div>
+  </div>
+</div>
+</div>
