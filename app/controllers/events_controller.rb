@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+      @events = Event.all
   end
 
   def new
@@ -28,10 +28,13 @@ class EventsController < ApplicationController
 
     redirect_to events_path(@event)
   end
-
-  private
-
-  def event_params
-    params.require(:event).permit(:title, :description, :location, :date, :duration, :price )
+  
+  def search
+      @events = Event.where(category: params[:query])
   end
+  
+  private
+    def event_params
+    params.require(:event).permit(:title, :description, :location, :date, :duration, :price, :category)
+    end
 end
