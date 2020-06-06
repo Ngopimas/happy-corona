@@ -13,10 +13,10 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
     @event.save
     if @event.save
-    redirect_to events_path
+      redirect_to events_path
     else
-    render :new
-end
+      render :new
+    end
   end
 
   private
