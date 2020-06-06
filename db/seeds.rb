@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
   Event.create!(title: 'Marathon', description: 'Grosse course à pied de moins de 10 personnes', user_id: User.last.id)
   Event.create!(title: 'Apero Géant', description: 'Vins, Bières et pétanques', user_id: User.last.id)
+
+  # User.create!(first_name: 'Didier', last_name: 'Raoult', description: 'Hydrothing expert, f*** official tests')
