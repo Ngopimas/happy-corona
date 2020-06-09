@@ -1,5 +1,5 @@
 <div class="container">
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
     <li class="nav-item">
       <a class="nav-link <%= 'active' if @destination == 'events' %>" id="pills-events-tab" data-toggle="pill" href="#pills-events" role="tab" aria-controls="pills-events" aria-selected="false">Mes évènements</a>
     </li>
@@ -9,7 +9,7 @@
   </ul>
   <div class="tab-content active" id="pills-tabContent">
     <div class="tab-pane fade <%= 'show active' if @destination == 'events' %>" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="pills-upcoming-tab" data-toggle="pill" href="#pills-upcoming" role="tab" aria-controls="pills-profile" aria-selected="true">Evènements à venir</a>
         </li>
@@ -69,8 +69,7 @@
       </div>
     </div>
     <div class="tab-pane fade <%= 'show active' if @destination == 'profile' %>" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <div class="form col-4 py-5">
-        <h1>Mon profil</h1>
+      <div class="form m-auto col-4 py-5">
         <div class="form-fields">
         <%= simple_form_for current_user do |f| %>
 
@@ -87,7 +86,12 @@
               </ul>
             </div>
           <% end %>
-
+          <div class="m-auto">
+            <% if @user.profile_pic.attached? %>
+              <%= cl_image_tag @user.profile_pic.key, class:"avatar-big" %>
+            <% end %>
+            <%= f.input :profile_pic, as: :file %>
+          </div>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :description %>
