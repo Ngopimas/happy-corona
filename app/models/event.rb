@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :attendances
   has_many :users, through: :attendances
+  has_one_attached :photo
 
   validates :date, presence: true
   # validate :date_future
