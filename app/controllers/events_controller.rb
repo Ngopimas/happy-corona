@@ -24,6 +24,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @events = []
+    @events << @event
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
   end
 
   def edit
