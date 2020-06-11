@@ -4,9 +4,10 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :attendances
   has_many :users, through: :attendances
+  has_one_attached :photo
 
   validates :date, presence: true
-  validate :date_future
+  # validate :date_future
   validates :title, presence: true,
             length: { minimum: 5 }
   validates :description, presence: true,
@@ -21,7 +22,7 @@ class Event < ApplicationRecord
   private
 
   def date_future
-    errors.add(:date, "la date de l'event est déjà passée") if self.date <= DateTime.now()
+    errors.add(:date, "la date de l'event est déjà passée") if self.date < DateTime.now()
   end
 
 end
