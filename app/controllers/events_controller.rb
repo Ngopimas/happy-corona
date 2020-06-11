@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
 
   def index
+    if params[:query].present?
+      @events = Event.where("title ILIKE ?", "%#{params[:query]}%")
+    else
       @events = Event.all
+    end
   end
 
   def new
@@ -20,6 +24,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @events = []
+    @events << @event
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
   end
 
   def edit
@@ -34,11 +46,11 @@ class EventsController < ApplicationController
   end
 
   def search
-      @events = Event.where(category: params[:query])
+      @events = Event.where(category: params[:category])
   end
 
   private
     def event_params
-    params.require(:event).permit(:title, :description, :location, :date, :duration, :price, :category)
+    params.require(:event).permit(:title, :description, :location, :date, :duration, :price, :category, :photo)
     end
 end

@@ -5,5 +5,9 @@
   <%= f.input :category, label: "Catégorie", collection: [ "(A)live Music", "CoronArt", "Food", "E-Sports", "Quarantine body challenge", "Soirées CoronaMousse"] %>
   <%= f.input :price, label: "Prix"  %>
   <%= f.input :description %>
-  <%= f.button :submit, "Soumettre l'évènement",  class: "btn btn-primary btn-lg" %>
+  <%= f.input :photo, as: :file %>
+  <% if @event.photo.attached? %>
+    <%= cl_image_tag @event.photo.key, class:"avatar-square" %>
+  <% end %>
+  <%= f.button :submit, "Soumettre l'évènement",  class: "btn btn-primary btn-lg mt-5" %>
 <% end %>
