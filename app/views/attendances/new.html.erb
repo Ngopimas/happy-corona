@@ -1,5 +1,5 @@
 <h2>S'inscrire à l'évènement</h2>
-<%= simple_form_for(event) do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for(@attendance) do |f| %>
+  <%= f.input :first_name %>
   <%= f.submit %>
 <% end %>
