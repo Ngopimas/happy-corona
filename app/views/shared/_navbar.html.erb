@@ -18,7 +18,7 @@
           <% if current_user.profile_pic.attached? %>
             <%= cl_image_tag current_user.profile_pic.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else  %>
-            <%= image_tag "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': true %>
+            <%= image_tag "defaultprofilepic.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': true %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Mes événements", "#{user_path(current_user, destination: "events")}", class: "dropdown-item" %>
