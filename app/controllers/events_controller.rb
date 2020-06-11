@@ -3,6 +3,8 @@ class EventsController < ApplicationController
   def index
     if params[:query].present?
       @events = Event.where("title ILIKE ?", "%#{params[:query]}%")
+    elsif params[:query2].present?
+      @events = Event.where(date: params[:query2])
     else
       @events = Event.all
     end

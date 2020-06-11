@@ -3,24 +3,40 @@
   <p> </p>
 </div>
 <div class="container">
-  <%= form_tag events_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Rechercher un événement"
-    %>
-    <%= submit_tag "Rechercher", class: "btn btn-primary" %>
-  <% end %>
+  <div class="row">
+    <div class="col-5">
+    <%= form_tag events_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rechercher par nom"
+      %>
+    </div>
+    <div class="col-5">
+      <%= text_field_tag :query2,
+        params[:query2],
+        class: "datepicker",
+        placeholder: "Rechercher par date"
+      %>
+    </div>
+    <div class="col-2">
+      <%= submit_tag "Rechercher", class: "col btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
 </div>
 <div class="container my-5">
   <div class="cards my-5">
     <% @events.each do |event| %>
     <div class="card-trip">
-      <img src="" />
+      <% if event.photo.attached? %>
+        <%= cl_image_tag event.photo.key, class:"avatar-square" %>
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2> <%= link_to event.title, event_path(event) %> </h2>
           <p> <%= event.location %> </p>
+          <p> <%= event.date %></p>
         </div>
         <% if event.price == 0 %>
           <p class="card-trip-pricing"> Gratuit </p>
