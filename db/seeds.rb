@@ -15,8 +15,8 @@ apero = { title: "Apéro géant", description: "Vins, Bières et pétanques, ame
 picnic = { title: "Picnic champêtre", description: "Picnic à la campagne au bord de l'eau sur une nappe Vichy", user_id: User.last.id, location: 'Bords de Marne', price: 0, date: Time.now+rand(1..20)*60*60*24, category: "Food"}
 mousse = { title: "Soirée CoronaMousse", description: "Soirée club avec distanciation sociale incluse et mousse hydroalcoolique pour éliminer toute propagation de virus liée à la sudation", user_id: User.last.id, location: 'Macumba', price: 15, date: Time.now+rand(1..20)*60*60*24, category: "Soirées CoronaMousse"}
 art = { title: "Exposition les masques dans l'histoire", description: "Exposition sur le thème des masques à travers l'histoire et leurs symboliques", user_id: User.last.id, location: 'Grand Palais', price: 20, date: Time.now+rand(1..20)*60*60*24, category: "CoronArt"}
-#afterwork = { title: "Soirée spéciale afterwork", description: "Bières et molky, la meilleure recette pour décompresser", user_id: User.last.id, location: 'Canal Saint-Martin', price: 0, date: Time.now+rand(1..20)*60*60*24, category: "Soirées CoronaMousse"}
+afterwork = { title: "Soirée afterwork géant", description: "Bières et molky, la meilleure recette pour décompresser", user_id: User.last.id, location: 'Canal Saint-Martin', price: 0, date: Time.now+rand(1..20)*60*60*24, category: "Soirées CoronaMousse"}
 
-[ marathon, apero, picnic, mousse, art ].each do |attributes|
+[ marathon, apero, picnic, mousse, art, afterwork ].each do |attributes|
   event = Event.create!(attributes)
 end
