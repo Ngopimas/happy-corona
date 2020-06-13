@@ -17,7 +17,9 @@
   <div class="cards my-5">
     <% @events.each do |event| %>
     <div class="card-trip">
-      <img src="" />
+      <% if event.photo.attached? %>
+        <%= cl_image_tag event.photo.key, class:"avatar-square" %>
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2> <%= link_to event.title, event_path(event) %> </h2>

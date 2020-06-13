@@ -32,12 +32,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @events = []
     @events << @event
+    @attendance = current_user.attendances.where(event_id: @event.id).first || Attendance.new
     @markers = @events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude
       }
     end
+    console
   end
 
   def edit
