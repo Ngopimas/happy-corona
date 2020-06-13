@@ -17,7 +17,12 @@
   <div class="cards my-5">
     <% @events.each do |event| %>
     <div class="card-trip">
-      <img src="" />
+        <% if event.photo.attached? %>
+          <div class="card-trip-img" style="background-image: url('<%= cl_image_path event.photo.key %>')"></div>
+        <% else %>
+          <div class="card-trip-img" style="background-image: url(https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
+          </div>
+        <% end %>
       <div class="card-trip-infos">
         <div>
           <h2> <%= link_to event.title, event_path(event) %> </h2>
