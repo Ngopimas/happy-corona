@@ -1,8 +1,15 @@
 class EventsController < ApplicationController
 
   def index
-    if params[:query].present?
-      @events = Event.where("title ILIKE ?", "%#{params[:query]}%")
+    if params[:search].present?
+      #@events = Event.where("title ILIKE ?", "%#{params[:search][:query]}%")
+      sql_query = " \
+        events.title @@ :query \
+        OR events.description @@ :query \
+        OR events.location @@ :query \
+        OR events.date @@ :query \
+      "
+      @events = Event.where(sql_query, query: "%#{params[:search][:query]}%")
     else
       @events = Event.all
     end
@@ -26,12 +33,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @events = []
     @events << @event
+    @attendance = current_user.attendances.where(event_id: @event.id).first || Attendance.new
     @markers = @events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude
       }
     end
+    console
   end
 
   def edit

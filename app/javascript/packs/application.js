@@ -37,4 +37,4 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 
-
+import "../plugins/flatpickr"

@@ -4,4 +4,7 @@ class User < ApplicationRecord
   has_one_attached :profile_pic
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :events
+  has_many :attendances
+
 end
