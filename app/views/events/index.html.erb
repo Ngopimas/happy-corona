@@ -3,27 +3,16 @@
   <p> </p>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-    <%= form_tag events_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Rechercher par nom"
-      %>
+
+    <%= simple_form_for :search, url: events_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+      <button name="button" type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i> Rechercher
+      </button>
     </div>
-    <div class="col-5">
-      <%= text_field_tag :query2,
-        params[:query2],
-        class: "datepicker",
-        placeholder: "Rechercher par date"
-      %>
-    </div>
-    <div class="col-2">
-      <%= submit_tag "Rechercher", class: "col btn btn-primary" %>
-    </div>
-    <% end %>
-  </div>
+  <% end %>
+
 </div>
 <div class="container my-5">
   <div class="cards my-5">

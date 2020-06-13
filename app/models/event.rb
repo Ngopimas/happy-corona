@@ -19,6 +19,13 @@ class Event < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_location_and_description,
+    against: [ :title, :description, :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   private
 
   def date_future

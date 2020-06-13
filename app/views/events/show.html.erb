@@ -1,5 +1,6 @@
 <div class="event-head" style="background-image: url(https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)"></div>
 
+
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-md-8">
@@ -7,7 +8,7 @@
         <h1><%= @event.title %></h1>
 
         <div class="d-flex justify-content-between mt-3 mb-0" >
-          <p class="event-show-address"><%= @event.date.strftime("Le %m/%d/%Y à %Ih%M") %></p>
+          <p class="event-show-address"><%= @event.date.strftime("Le %m/%d/%Y") %></p>
           <p class="event-show-address mr-3"><%= @event.price %>€</p>
         </div>
       </div>
@@ -44,7 +45,17 @@
       </div>
 
       <div class="event-show-card">
-        <a href="#" class="btn btn-primary btn-lg w-100">Je participe</a>
+
+        <div id="attend_form" >
+          <% if @attendance.user_id %>
+              <%= link_to "J'annule ma participation", @attendance, method: :delete, class: "btn btn-primary w-100 btn-lg"  %>
+          <% else %>
+              <%= form_for(current_user.attendances.build, remote: true) do |f| %>
+              <div><%= hidden_field_tag :event_id, @event.id %></div>
+              <p class="lead center"><%= f.submit "Je participe", class: "btn btn-primary w-100 btn-lg" %></p>
+                <% end %>
+          <% end %>
+        </div>
       </div>
 
       <div class="event-show-card">
@@ -56,3 +67,4 @@
     </div>
   </div>
 </div>
+
