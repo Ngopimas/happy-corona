@@ -3,6 +3,7 @@
   <p> </p>
 </div>
 <div class="container">
+
     <%= simple_form_for :search, url: events_path, method: :get do |f| %>
     <div class="search-form-control form-group">
       <input class="form-control string required" type="text" name="search[query]" id="search_query" />
@@ -24,6 +25,7 @@
         <div>
           <h2> <%= link_to event.title, event_path(event) %> </h2>
           <p> <%= event.location %> </p>
+          <p> <%= event.date %></p>
         </div>
         <% if event.price == 0 %>
           <p class="card-trip-pricing"> Gratuit </p>

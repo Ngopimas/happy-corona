@@ -7,6 +7,7 @@ class EventsController < ApplicationController
         events.title @@ :query \
         OR events.description @@ :query \
         OR events.location @@ :query \
+        OR events.date @@ :query \
       "
       @events = Event.where(sql_query, query: "%#{params[:search][:query]}%")
     else
