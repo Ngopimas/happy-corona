@@ -8,8 +8,13 @@
         <h1><%= @event.title %></h1>
 
         <div class="d-flex justify-content-between mt-3 mb-0" >
-          <p class="event-show-address"><%= @event.date.strftime("Le %m/%d/%Y") %></p>
-          <p class="event-show-address mr-3"><%= @event.price %>€</p>
+          <p class="event-show-address"><%= @event.date.strftime("Le %m/%d/%Y à %Ih%M") %></p>
+
+          <% if @event.price == 0 %>
+            <p class="event-show-address mr-3">Gratuit</p>
+          <% else %>
+            <p class="event-show-address mr-3"><%= @event.price %>€</p>
+          <% end %>
         </div>
       </div>
 
@@ -56,12 +61,6 @@
                 <% end %>
           <% end %>
         </div>
-      </div>
-
-      <div class="event-show-card">
-        <h5> X inscrits, dont:</h5>
-        <p><%= @event.user.first_name %>(host)</p>
-        <p></p>
       </div>
 
     </div>
