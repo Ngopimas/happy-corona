@@ -1,5 +1,8 @@
-<div class="event-head" style="background-image: url(https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)"></div>
-
+<% if  %>
+<div class="event-head" style="background-image: url(https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)">
+<% else %>
+  <%= cl_image_tag event.photo.key, class:"avatar-square" %>
+<% end %>
 
 <div class="container margin-top-negative">
   <div class="row">
