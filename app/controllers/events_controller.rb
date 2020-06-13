@@ -40,7 +40,6 @@ class EventsController < ApplicationController
         lng: event.longitude
       }
     end
-    console
   end
 
   def edit
