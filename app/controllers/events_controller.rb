@@ -23,6 +23,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     if @event.save
+      @attendance = Attendance.new
+      @attendance.event_id = @event.id
+      @attendance.user_id = current_user.id
+      @attendance.save
       redirect_to event_path(@event)
     else
     render :new
